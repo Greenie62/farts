@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .app{
+            height:100vh;
+            width:100vw;
+        }
+
+
+        .poop{
+            width:100px;
+            height:300px;
+            border-radius:1rem;
+            background:brown;
+            position:relative;
+            animation:pooping 1s forwards infinite;
+            left:20%;
+        }
+
+        .poop-two{
+            animation-delay:.5s;
+        }
+
+        @keyframes pooping{
+            0%{top:-600px}
+            100%{top:900px}
+        }
+    </style>
+    <title>💩💩💩💩 </title>
+</head>
+<body>
+    <div class="app">
+    <div class="output">Click</div>
+
+
+</div>
+    <script>
+        let counter=5;
+       
+        document.querySelector(".output").addEventListener("click",()=>{
+            countDown()
+        })
+
+        function countDown(){
+            if(counter >= 0){
+                var html = `<h1>${counter}</h1>`
+
+                document.querySelector(".output").innerHTML=counter
+                counter--
+                setTimeout(countDown,1000)
+            }
+            else{
+                console.log("Start the farts!")
+                startFarts()
+            }
+
+        }
+
+
+        function startFarts(){
+            document.querySelector(".app").innerHTML=""
+            new Audio("./fart.wav").play();
+            var poopOne=document.createElement("div")
+            var poopTwo=document.createElement("div")
+            poopOne.className="poop poop-one"
+            poopTwo.className="poop poop-two"
+            document.querySelector(".app").appendChild(poopOne)
+            document.querySelector(".app").appendChild(poopTwo)
+
+            setTimeout(startFarts,2000)
+        }
+
+        
+    </script>
+</body>
+</html>
